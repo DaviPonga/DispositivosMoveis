@@ -10,6 +10,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 Button b;
     int contador=0;
@@ -24,7 +26,8 @@ Button b;
         b.setOnClickListener(v -> {
             contador++;
             tv.setText(Integer.toString(contador));
-            tv.setText("Azideia");
+            Random random=new Random();
+            int r= random.nextInt(bound: 100);
         });
     }
     }
