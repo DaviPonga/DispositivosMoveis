@@ -2,6 +2,7 @@ package com.example.meuapp;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 Button b;
+    int contador=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,8 +20,11 @@ Button b;
         setContentView(R.layout.activity_main);
         getString(R.string.app_name);
         b=findViewById(R.id.button);
+        TextView tv = findViewById(R.id.tv);
         b.setOnClickListener(v -> {
-            b.setText("Pa Puuuuuuum");
+            contador++;
+            tv.setText(Integer.toString(contador));
+            tv.setText("Azideia");
         });
     }
     }
