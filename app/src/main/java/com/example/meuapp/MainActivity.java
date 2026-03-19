@@ -25,9 +25,11 @@ Button b;
         TextView tv = findViewById(R.id.tv);
         b.setOnClickListener(v -> {
             contador++;
-            tv.setText(Integer.toString(contador));
+
             Random random=new Random();
-            int r= random.nextInt(bound: 100);
+            int r= random.nextInt( 100);
+
+            tv.setText(Integer.toString(r));
         });
     }
     }
