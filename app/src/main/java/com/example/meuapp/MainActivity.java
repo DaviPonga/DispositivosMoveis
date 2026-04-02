@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.reflect.Array;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +34,11 @@ ImageView imageView;
 
        bntAvancar.setOnClickListener(v -> {
            imageView.setImageResource(imagens[posicao]);
+           if(posicao > imagens.length-1) {
+                posicao =0;
+           }else{
+               posicao++;
+           }
        });
 
     }
