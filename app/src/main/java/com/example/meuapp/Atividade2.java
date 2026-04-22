@@ -1,5 +1,6 @@
 package com.example.meuapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,8 +25,8 @@ public class Atividade2 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        intent i= getIntent();
-        Bundle b=i
+        String txt=getIntent().getExtras().getString("msg");
+        tv.setText(txt);
         bntFechar=findViewById(R.id.bntFechar);
         bntFechar.setOnClickListener(v -> {
             finish();

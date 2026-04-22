@@ -7,28 +7,28 @@ import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText et;
-        Button btn;
+    Button btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        et = findViewById(R.id.EditText)
+
+        et = findViewById(R.id.EditText);
         btn = findViewById(R.id.button);
+
         btn.setOnClickListener(v -> {
+            String msg = et.getText().toString();
 
-           Intent i =new Intent(getApplicationContext(),Atividade2.class);
-           String mensagem=et.getText().toString();
-           i.putExtra("msg",msg);
-           startActivity(i);
+            Intent intent = new Intent(MainActivity.this, Atividade2.class);
+            intent.putExtra("msg", msg);
 
-            });
-        }
+            startActivity(intent);
+        });
+    }
 }
