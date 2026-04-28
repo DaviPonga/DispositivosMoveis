@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             String alturaStr = Altura.getText().toString();
 
             if (pesoStr.isEmpty() || alturaStr.isEmpty()) {
-
+                return;
             }
 
             float valorPeso = Float.parseFloat(pesoStr);
@@ -42,27 +43,30 @@ public class MainActivity extends AppCompatActivity {
 
             float imc = valorPeso / (valorAltura * valorAltura);
 
-            Result.setText(String.format("IMC: %.2f", imc));
+            String classificacao;
 
             if (imc < 18.5) {
-                classi.setText("Abaixo do peso");
-                imageView.setImageResource(R.drawable.abaixopeso);
-            } else if (imc >= 18.5 && imc <= 24.9) {
-                classi.setText("Peso normal");
-                imageView.setImageResource(R.drawable.normal);
-            } else if (imc >= 25 && imc <= 29.9) {
-                classi.setText("Sobrepeso");
-                imageView.setImageResource(R.drawable.sobrepeso);
-            } else if (imc >= 30 && imc <= 34.9) {
-                classi.setText("Obesidade Grau 1");
-                imageView.setImageResource(R.drawable.obesidade1);
-            } else if (imc >= 35 && imc <= 39.9) {
-                classi.setText("Obesidade Grau 2");
-                imageView.setImageResource(R.drawable.obesidade2);
+                classificacao = "Abaixo do peso";
+            } else if (imc <= 24.9) {
+                classificacao = "Peso normal";
+            } else if (imc <= 29.9) {
+                classificacao = "Sobrepeso";
+            } else if (imc <= 34.9) {
+                classificacao = "Obesidade Grau 1";
+            } else if (imc <= 39.9) {
+                classificacao = "Obesidade Grau 2";
             } else {
-                classi.setText("Obesidade Grau 3");
-                imageView.setImageResource(R.drawable.obesidade3);
+                classificacao = "Obesidade Grau 3";
             }
+
+            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+
+            intent.putExtra("imc", imc);
+            intent.putExtra("peso", valorPeso);
+            intent.putExtra("altura", valorAltura);
+            intent.putExtra("classificacao", classificacao);
+
+            startActivity(intent);
         });
     }
 }
