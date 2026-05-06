@@ -6,13 +6,10 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    Button Voltar;
+    Button voltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +17,15 @@ public class MainActivity2 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main2);
 
-        Voltar = findViewById(R.id.Voltar);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        voltar = findViewById(R.id.Voltar);
+        TextView tv = findViewById(R.id.textView);
 
-        });
-        Voltar.setOnClickListener(v -> finish());
-        String nome = getIntent().getExtras().getString("nome");
-        TextView tv=findViewById(R.id.textView);
-        tv.setText(nome);
+        String nome = getIntent().getStringExtra("nome");
+
+        if (nome != null) {
+            tv.setText(nome);
+        }
+
+        voltar.setOnClickListener(v -> finish());
     }
 }
