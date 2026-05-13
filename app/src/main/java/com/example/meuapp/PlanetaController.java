@@ -1,11 +1,12 @@
 package com.example.meuapp;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 public class PlanetaController {
-    planetaDAO planetaDAO;
-    public PlanetaController(){
-        planetaDAO=new planetaDAO();
+    PlanetaDAO planetaDAO;
+    public PlanetaController() {
+        planetaDAO=new PlanetaDAO();
     }
-    public ArrayList<planeta> listaPlanetas(){
-        return planetaDAO.listaPlanetas;
+    public ArrayList<Planeta> listaPlanetas(){
+        return planetaDAO.listaPlanetas();
     }
 }

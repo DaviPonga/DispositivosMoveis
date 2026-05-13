@@ -1,18 +1,35 @@
 package com.example.meuapp;
-
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import  android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class AdapterPlaneta extends ArrayAdapter {
+import java.util.List;
+public class AdapterPlaneta extends ArrayAdapter<Planeta> {
+    Context lcontext;
+    public AdapterPlaneta(@NonNull Context context, int resource, @NonNull List<Planeta> objects) {
+        super(context, resource, objects);
+        lcontext=context;
+    }
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return super.getView(position, convertView, parent);
-    }
+        LayoutInflater inflater = LayoutInflater.from(lcontext);
+        View itemView=inflater.inflate(R.layout.item_lista,parent);
 
-    public AdapterPlaneta()
+        TextView tvNome = itemView.findViewById(R.id.textView);
+        ImageView imageView = itemView.findViewById(R.id.imageView);
+        Planeta p = getItem(position);
+
+        imageView.setImageResource(p.foto);
+
+        tvNome.setText(p.nome);
+        return itemView;
+    }
 }
